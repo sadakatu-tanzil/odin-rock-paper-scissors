@@ -89,3 +89,15 @@ body {
   border-radius: 8px;
   border: none;
 }
+
+.text-red {
+  color: red;
+}
+
+.text-green {
+  color: green;
+}
+
+.text-orange {
+  color: orange;
+}

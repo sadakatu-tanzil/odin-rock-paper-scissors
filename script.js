@@ -46,6 +46,11 @@ function playRound(humanChoice, computerChoice) {
   }
 
   if (humanChoice === computerChoice) {
+    computerChoiceElement.classList.remove("text-red", "text-green");
+    playerChoiceElement.classList.remove("text-red", "text-green");
+
+    computerChoiceElement.classList.add("text-orange");
+    playerChoiceElement.classList.add("text-orange");
     // console.log("it's a draw!");
     return;
   }
@@ -56,9 +61,19 @@ function playRound(humanChoice, computerChoice) {
     (humanChoice === "scissors" && computerChoice === "rock")
   ) {
     computerScore++;
+
+    computerChoiceElement.classList.remove("text-red", "text-green");
+    playerChoiceElement.classList.remove("text-red", "text-green");
+    computerChoiceElement.classList.add("text-green");
+    playerChoiceElement.classList.add("text-red");
     // console.log(`you lose! ${computerChoice} beats ${humanChoice}`);
   } else {
     humanScore++;
+
+    computerChoiceElement.classList.remove("text-red", "text-green");
+    playerChoiceElement.classList.remove("text-red", "text-green");
+    playerChoiceElement.classList.add("text-green");
+    computerChoiceElement.classList.add("text-red");
     // console.log(`you win! ${humanChoice} beats ${computerChoice}`);
   }
 }
