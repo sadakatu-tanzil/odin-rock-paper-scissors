@@ -1,9 +1,7 @@
 let humanScore = 0;
 let computerScore = 0;
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-playRound(humanSelection, computerSelection);
+playGame(5);
 
 function getComputerChoice() {
   const choices = ["rock", "paper", "scissors"];
@@ -42,6 +40,24 @@ function playRound(humanChoice, computerChoice) {
     humanScore++;
     console.log(`you win! ${humanChoice} beats ${computerChoice}`);
   }
+}
+
+function playGame(repeat) {
+  for (let i = 1; i <= repeat; i++) {
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+  }
 
   console.log(`Score: Human ${humanScore}, Computer ${computerScore}`);
+
+  let winner = "";
+
+  if (humanScore > computerScore) {
+    winner = "player";
+  } else {
+    winner = "computer";
+  }
+
+  console.log(`Winner: ${winner}`);
 }
