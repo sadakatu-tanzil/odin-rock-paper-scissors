@@ -28,9 +28,14 @@ body {
 .game-window {
   width: 480px;
   margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.game-score {
+.game-score,
+.game-choice {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,15 +45,24 @@ body {
   border-radius: 8px;
 }
 
-.score-display {
+.score-display,
+.choice-block {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+.choice-block {
+  gap: 16px;
+}
+
 .score {
   font-size: 64px;
+}
+
+.choice {
+  font-size: 32px;
 }
 
 .candidate {
