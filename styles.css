@@ -35,7 +35,8 @@ body {
 }
 
 .game-score,
-.game-choice {
+.game-choice,
+.game-player-choices {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,6 +44,15 @@ body {
   border: 1px solid #efefef;
   padding: 16px 0;
   border-radius: 8px;
+}
+
+.game-player-choices {
+  gap: 16px;
+  padding: 16px;
+}
+
+.game-player-choices .player-option {
+  flex: 1;
 }
 
 .score-display,
@@ -63,9 +73,19 @@ body {
 
 .choice {
   font-size: 32px;
+  text-transform: capitalize;
 }
 
 .candidate {
   font-weight: 600;
   text-transform: uppercase;
+}
+
+.player-option {
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 8px;
+  border: none;
 }
