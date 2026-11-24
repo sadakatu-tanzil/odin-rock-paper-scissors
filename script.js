@@ -3,7 +3,9 @@ let computerScore = 0;
 
 const playerButtons = document.querySelectorAll(".player-option");
 const playerChoiceElement = document.querySelector("#player-choice");
+const playerScoreElement = document.querySelector("#player-score");
 const computerChoiceElement = document.querySelector("#computer-choice");
+const computerScoreElement = document.querySelector("#computer-score");
 
 playerButtons.forEach((playerButton) => {
   playerButton.addEventListener("click", function () {
@@ -13,11 +15,13 @@ playerButtons.forEach((playerButton) => {
     playerChoiceElement.textContent = playerChoice;
     computerChoiceElement.textContent = computerChoice;
 
+    playerScoreElement.textContent = humanScore;
+    computerScoreElement.textContent = computerScore;
+
     playRound(playerChoice, computerChoice);
   });
 });
 
-// the following is for devtools console play
 // playGame(5);
 
 function getComputerChoice() {
@@ -42,7 +46,7 @@ function playRound(humanChoice, computerChoice) {
   }
 
   if (humanChoice === computerChoice) {
-    console.log("it's a draw!");
+    // console.log("it's a draw!");
     return;
   }
 
@@ -52,29 +56,29 @@ function playRound(humanChoice, computerChoice) {
     (humanChoice === "scissors" && computerChoice === "rock")
   ) {
     computerScore++;
-    console.log(`you lose! ${computerChoice} beats ${humanChoice}`);
+    // console.log(`you lose! ${computerChoice} beats ${humanChoice}`);
   } else {
     humanScore++;
-    console.log(`you win! ${humanChoice} beats ${computerChoice}`);
+    // console.log(`you win! ${humanChoice} beats ${computerChoice}`);
   }
 }
 
-function playGame(repeat) {
-  for (let i = 1; i <= repeat; i++) {
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-    playRound(humanSelection, computerSelection);
-  }
+// function playGame(repeat) {
+//   for (let i = 1; i <= repeat; i++) {
+//     const humanSelection = getHumanChoice();
+//     const computerSelection = getComputerChoice();
+//     playRound(humanSelection, computerSelection);
+//   }
 
-  console.log(`Score: Human ${humanScore}, Computer ${computerScore}`);
+//   console.log(`Score: Human ${humanScore}, Computer ${computerScore}`);
 
-  let winner = "";
+//   let winner = "";
 
-  if (humanScore > computerScore) {
-    winner = "player";
-  } else {
-    winner = "computer";
-  }
+//   if (humanScore > computerScore) {
+//     winner = "player";
+//   } else {
+//     winner = "computer";
+//   }
 
-  console.log(`Winner: ${winner}`);
-}
+//   console.log(`Winner: ${winner}`);
+// }
