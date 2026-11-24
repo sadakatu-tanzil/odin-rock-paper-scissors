@@ -7,6 +7,8 @@ const playerScoreElement = document.querySelector("#player-score");
 const computerChoiceElement = document.querySelector("#computer-choice");
 const computerScoreElement = document.querySelector("#computer-score");
 
+displayScore();
+
 playerButtons.forEach((playerButton) => {
   playerButton.addEventListener("click", function () {
     const playerChoice = playerButton.textContent.trim().toLowerCase();
@@ -14,9 +16,6 @@ playerButtons.forEach((playerButton) => {
 
     playerChoiceElement.textContent = playerChoice;
     computerChoiceElement.textContent = computerChoice;
-
-    playerScoreElement.textContent = humanScore;
-    computerScoreElement.textContent = computerScore;
 
     playRound(playerChoice, computerChoice);
   });
@@ -36,18 +35,27 @@ function getComputerChoice() {
 // }
 
 function playRound(humanChoice, computerChoice) {
-  if (
-    humanChoice !== "rock" &&
-    humanChoice !== "paper" &&
-    humanChoice !== "scissors"
-  ) {
-    alert("Invalid choice, mate!");
-    return;
-  }
+  // if (
+  //   humanChoice !== "rock" &&
+  //   humanChoice !== "paper" &&
+  //   humanChoice !== "scissors"
+  // ) {
+  //   alert("Invalid choice, mate!");
+  //   return;
+  // }
 
   if (humanChoice === computerChoice) {
-    computerChoiceElement.classList.remove("text-red", "text-green");
-    playerChoiceElement.classList.remove("text-red", "text-green");
+    computerChoiceElement.classList.remove(
+      "text-red",
+      "text-green",
+      "text-orange",
+    );
+
+    playerChoiceElement.classList.remove(
+      "text-red",
+      "text-green",
+      "text-orange",
+    );
 
     computerChoiceElement.classList.add("text-orange");
     playerChoiceElement.classList.add("text-orange");
@@ -61,17 +69,35 @@ function playRound(humanChoice, computerChoice) {
     (humanChoice === "scissors" && computerChoice === "rock")
   ) {
     computerScore++;
+    displayScore();
 
-    computerChoiceElement.classList.remove("text-red", "text-green");
-    playerChoiceElement.classList.remove("text-red", "text-green");
+    computerChoiceElement.classList.remove(
+      "text-red",
+      "text-green",
+      "text-orange",
+    );
+    playerChoiceElement.classList.remove(
+      "text-red",
+      "text-green",
+      "text-orange",
+    );
     computerChoiceElement.classList.add("text-green");
     playerChoiceElement.classList.add("text-red");
     // console.log(`you lose! ${computerChoice} beats ${humanChoice}`);
   } else {
     humanScore++;
+    displayScore();
 
-    computerChoiceElement.classList.remove("text-red", "text-green");
-    playerChoiceElement.classList.remove("text-red", "text-green");
+    computerChoiceElement.classList.remove(
+      "text-red",
+      "text-green",
+      "text-orange",
+    );
+    playerChoiceElement.classList.remove(
+      "text-red",
+      "text-green",
+      "text-orange",
+    );
     playerChoiceElement.classList.add("text-green");
     computerChoiceElement.classList.add("text-red");
     // console.log(`you win! ${humanChoice} beats ${computerChoice}`);
@@ -97,3 +123,8 @@ function playRound(humanChoice, computerChoice) {
 
 //   console.log(`Winner: ${winner}`);
 // }
+
+function displayScore() {
+  playerScoreElement.textContent = humanScore;
+  computerScoreElement.textContent = computerScore;
+}
