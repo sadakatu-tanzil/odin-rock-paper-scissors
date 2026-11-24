@@ -1,6 +1,22 @@
 let humanScore = 0;
 let computerScore = 0;
 
+const playerButtons = document.querySelectorAll(".player-option");
+const playerChoiceElement = document.querySelector("#player-choice");
+const computerChoiceElement = document.querySelector("#computer-choice");
+
+playerButtons.forEach((playerButton) => {
+  playerButton.addEventListener("click", function () {
+    const playerChoice = playerButton.textContent.trim().toLowerCase();
+    const computerChoice = getComputerChoice();
+
+    playerChoiceElement.textContent = playerChoice;
+    computerChoiceElement.textContent = computerChoice;
+
+    playRound(playerChoice, computerChoice);
+  });
+});
+
 // the following is for devtools console play
 // playGame(5);
 
@@ -10,10 +26,10 @@ function getComputerChoice() {
   return choices[randomInteger];
 }
 
-function getHumanChoice() {
-  const choice = prompt("Pick one between rock, paper and scissors");
-  return choice.trim().toLowerCase();
-}
+// function getHumanChoice() {
+//   const choice = prompt("Pick one between rock, paper and scissors");
+//   return choice.trim().toLowerCase();
+// }
 
 function playRound(humanChoice, computerChoice) {
   if (
