@@ -12,3 +12,8 @@ function getComputerChoice() {
   const randomInteger = Math.floor(Math.random() * 3);
   return choices[randomInteger];
 }
+
+function getHumanChoice() {
+  const choice = prompt("Pick one between rock, paper and scissors");
+  choice.trim();
+}
