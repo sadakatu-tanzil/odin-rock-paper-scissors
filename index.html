@@ -6,10 +6,45 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors</title>
+
+    <!-- css -->
+    <link
+      rel="stylesheet"
+      href="styles.css" />
   </head>
 
   <body>
-    <h1>The game is played using dev tool console</h1>
+    <header class="header">
+      <div class="container">
+        <h1>A game of Rock Paper Scissors</h1>
+      </div>
+    </header>
+
+    <div class="game">
+      <div class="container">
+        <div class="game-window">
+          <div class="game-score">
+            <div class="score-display">
+              <span
+                id="player-score"
+                class="score">
+                0
+              </span>
+              <span class="candidate">Player</span>
+            </div>
+
+            <div class="score-display">
+              <span
+                id="computer-score"
+                class="score">
+                0
+              </span>
+              <span class="candidate">Computer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- javascript -->
     <script src="script.js"></script>

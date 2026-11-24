@@ -1,7 +1,8 @@
 let humanScore = 0;
 let computerScore = 0;
 
-playGame(5);
+// the following is for devtools console play
+// playGame(5);
 
 function getComputerChoice() {
   const choices = ["rock", "paper", "scissors"];
