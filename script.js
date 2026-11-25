@@ -6,6 +6,7 @@ const playerChoiceElement = document.querySelector("#player-choice");
 const playerScoreElement = document.querySelector("#player-score");
 const computerChoiceElement = document.querySelector("#computer-choice");
 const computerScoreElement = document.querySelector("#computer-score");
+const winnerDeclaration = document.querySelector(".winner");
 
 displayScore();
 
@@ -21,29 +22,13 @@ playerButtons.forEach((playerButton) => {
   });
 });
 
-// playGame(5);
-
 function getComputerChoice() {
   const choices = ["rock", "paper", "scissors"];
   const randomInteger = Math.floor(Math.random() * 3);
   return choices[randomInteger];
 }
 
-// function getHumanChoice() {
-//   const choice = prompt("Pick one between rock, paper and scissors");
-//   return choice.trim().toLowerCase();
-// }
-
 function playRound(humanChoice, computerChoice) {
-  // if (
-  //   humanChoice !== "rock" &&
-  //   humanChoice !== "paper" &&
-  //   humanChoice !== "scissors"
-  // ) {
-  //   alert("Invalid choice, mate!");
-  //   return;
-  // }
-
   if (humanChoice === computerChoice) {
     computerChoiceElement.classList.remove(
       "text-red",
@@ -59,7 +44,6 @@ function playRound(humanChoice, computerChoice) {
 
     computerChoiceElement.classList.add("text-orange");
     playerChoiceElement.classList.add("text-orange");
-    // console.log("it's a draw!");
     return;
   }
 
@@ -83,7 +67,6 @@ function playRound(humanChoice, computerChoice) {
     );
     computerChoiceElement.classList.add("text-green");
     playerChoiceElement.classList.add("text-red");
-    // console.log(`you lose! ${computerChoice} beats ${humanChoice}`);
   } else {
     humanScore++;
     displayScore();
@@ -100,31 +83,29 @@ function playRound(humanChoice, computerChoice) {
     );
     playerChoiceElement.classList.add("text-green");
     computerChoiceElement.classList.add("text-red");
-    // console.log(`you win! ${humanChoice} beats ${computerChoice}`);
   }
+  declareWinner();
 }
-
-// function playGame(repeat) {
-//   for (let i = 1; i <= repeat; i++) {
-//     const humanSelection = getHumanChoice();
-//     const computerSelection = getComputerChoice();
-//     playRound(humanSelection, computerSelection);
-//   }
-
-//   console.log(`Score: Human ${humanScore}, Computer ${computerScore}`);
-
-//   let winner = "";
-
-//   if (humanScore > computerScore) {
-//     winner = "player";
-//   } else {
-//     winner = "computer";
-//   }
-
-//   console.log(`Winner: ${winner}`);
-// }
 
 function displayScore() {
   playerScoreElement.textContent = humanScore;
   computerScoreElement.textContent = computerScore;
+}
+
+function disableButtons() {
+  playerButtons.forEach((button) => button.setAttribute("disabled", ""));
+}
+
+function declareWinner() {
+  let winner = "";
+  if (computerScore === 5) {
+    winner = "computer";
+    disableButtons();
+    winnerDeclaration.textContent = `Winner is: ${winner}, refresh to play again`;
+  }
+  if (humanScore === 5) {
+    winner = "player";
+    disableButtons();
+    winnerDeclaration.textContent = `Winner is: ${winner}, refresh to play again`;
+  }
 }
