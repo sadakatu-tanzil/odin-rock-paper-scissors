@@ -36,7 +36,8 @@ body {
 
 .game-score,
 .game-choice,
-.game-player-choices {
+.game-player-choices,
+.winner-announcer {
   display: flex;
   justify-content: center;
   align-items: center;
